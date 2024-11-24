@@ -1,6 +1,5 @@
 package com.example.ch_01;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,11 +21,17 @@ public class TicketOffice {
         return tickets.removeFirst();
     }
 
-    public void plusAmount(Long amount) {
+    private void plusAmount(Long amount) {
         this.amount += amount;
     }
 
     public void minusAmount(Long amount) {
         this.amount -= amount;
+    }
+
+    public Ticket sellTicket() {
+        Ticket ticket = getTicket();
+        plusAmount(ticket.getFee());
+        return ticket;
     }
 }
