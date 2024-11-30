@@ -1,12 +1,12 @@
 package com.example.screen;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Screening {
-    private Movie movie;
-    private int sequence;
-    private LocalDateTime whenScreened;
-
+    private final Movie movie;
+    private final int sequence;
+    private final LocalDateTime whenScreened;
 
     public Screening(Movie movie, int sequence, LocalDateTime whenScreened) {
         this.movie = movie;
@@ -20,6 +20,10 @@ public class Screening {
 
     public LocalDateTime getWhenScreened() {
         return whenScreened;
+    }
+
+    public LocalTime getStartTime() {
+        return whenScreened.toLocalTime();
     }
 
     public boolean isSequence(int sequence) {
