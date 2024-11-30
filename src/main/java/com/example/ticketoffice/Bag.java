@@ -1,4 +1,4 @@
-package com.example.ch_01;
+package com.example.ticketoffice;
 
 /**
  * 관람객이 가지고 오는 Bag
