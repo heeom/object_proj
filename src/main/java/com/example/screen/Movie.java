@@ -6,7 +6,7 @@ public class Movie {
 
     private String title;
     private String runningTime;
-    private String subject;
-    private BigDecimal amount;
+    private BigDecimal fee;
+    private String discountPolicy;
 
 }
