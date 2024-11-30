@@ -1,15 +1,14 @@
 package com.example.screen;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DiscountPolicy {
 
     private final List<DiscountCondition> conditions;
 
-    public DiscountPolicy() {
-        this.conditions = new ArrayList<>();
+    public DiscountPolicy(DiscountCondition ...discountConditions) {
+        this.conditions = List.of(discountConditions);
     }
 
     public Money calculateDiscountAmount(Screening screening) {

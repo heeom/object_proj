@@ -30,5 +30,8 @@ public class Screening {
         return this.sequence == sequence;
     }
 
+    public Money getMovieFee() {
+        return this.movie.getFee();
+    }
 
 }

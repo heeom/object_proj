@@ -20,8 +20,8 @@ public class Money {
         return new Money(this.amount.add(amount.amount));
     }
 
-    public Money times(Double percent) {
-        return new Money(this.amount.multiply(BigDecimal.valueOf(percent)));
+    public Money times(BigDecimal percent) {
+        return new Money(this.amount.multiply(percent));
     }
 
     public boolean isLessThan(Money other) {
