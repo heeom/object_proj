@@ -1,13 +1,15 @@
 package com.example.screen;
 
+import java.time.Duration;
+
 public class Movie {
 
     private String title;
-    private String runningTime;
+    private Duration runningTime;
     private Money fee; // 정가
     private DiscountPolicy discountPolicy;
 
-    public Movie(String title, String runningTime, Money fee, DiscountPolicy discountPolicy) {
+    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
         this.title = title;
         this.runningTime = runningTime;
         this.fee = fee;
