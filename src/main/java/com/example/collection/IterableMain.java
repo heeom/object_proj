@@ -8,17 +8,22 @@ public class IterableMain {
         List<Integer> integers = new ArrayList<>();
         integers.add(1);
         integers.add(2);
-        System.out.println("List : " + integers.iterator());
+        System.out.println("ArrayList : " + integers.iterator());
+        integers.iterator().hasNext();
 
 
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "one");
         map.put(2, "two");
-        System.out.println("Map : " + map.keySet().iterator());
+        System.out.println("HashMap : " + map.keySet().iterator());
 
+        List<Integer> linkedList = new LinkedList<>();
+        linkedList.add(1);
+        System.out.println("LinkedList : " + linkedList.iterator());
 
-        Set<Integer> set = Set.of(1, 2);
-        System.out.println("Set : " + set.iterator());
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        System.out.println("HashSet : " + set.iterator());
 
     }
 }

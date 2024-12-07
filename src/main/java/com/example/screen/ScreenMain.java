@@ -1,8 +1,8 @@
 package com.example.screen;
 
-import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -32,5 +32,9 @@ public class ScreenMain {
                         new PeriodCondition(DayOfWeek.TUESDAY, LocalTime.of(10, 0), LocalTime.of(11, 59))
                 )
         );
+
+        Screening screening = new Screening(harryPotter, 10, LocalDateTime.of(2024, 12, 24, 10, 30));
+        Money money = harryPotter.calculateMovieFee(screening);
+        System.out.println(money);
     }
 }
