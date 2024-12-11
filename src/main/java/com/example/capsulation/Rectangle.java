@@ -14,6 +14,10 @@ public class Rectangle {
         this.bottom = bottom;
     }
 
+    /**
+     * 너비와 높이 조절
+     * @param multiple
+     */
     public void enlarge(int multiple) {
         this.right *= multiple;
         this.left *= multiple;

@@ -9,13 +9,7 @@ public class ReservationAgency {
         boolean discountable = false;
         // DiscountCondition 데이터 변경시 해당 클래스도 수정돼야한다
         for (DiscountCondition condition : movie.getDiscountConditions()) {
-            if (condition.getType() == DiscountConditionType.PERIOD) {
-                discountable = screening.getWhenScreened().getDayOfWeek().equals(condition.getDayOfWeek())
-                        && condition.getStartTime().compareTo(screening.getWhenScreened().toLocalTime()) <= 0
-                        && condition.getEndTime().compareTo(screening.getWhenScreened().toLocalTime()) >= 0;
-            } else {
-                discountable = condition.getSequence() == screening.getSequence();
-            }
+            discountable = condition.isDiscountable(screening.getWhenScreened().getDayOfWeek(), screening.getWhenScreened().toLocalTime());
 
             if (discountable) {
                 break;
