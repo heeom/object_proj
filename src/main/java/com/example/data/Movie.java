@@ -1,8 +1,7 @@
 package com.example.data;
 
-import com.example.screen.DiscountCondition;
-import com.example.screen.Money;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Movie {
     private MovieType movieType; // 객체의 종류를 정한다
     // 정책 타입에 따라 discountAmount, discountPercent 둘 중 하나를 사용한다
     private Money discountAmount;
-    private double discountPercent;
+    private BigDecimal discountPercent;
 
     public Money getFee() {
         return fee;
@@ -51,11 +50,11 @@ public class Movie {
         this.discountAmount = discountAmount;
     }
 
-    public double getDiscountPercent() {
+    public BigDecimal getDiscountPercent() {
         return discountPercent;
     }
 
-    public void setDiscountPercent(double discountPercent) {
+    public void setDiscountPercent(BigDecimal discountPercent) {
         this.discountPercent = discountPercent;
     }
 }
