@@ -17,7 +17,10 @@ public class Customer {
     }
 
     public void addCart(Product product) {
-        product.validateStockAvailability();
         shoppingCart.add(product);
+    }
+
+    public Order order() {
+        return new Order(this, shoppingCart.getCart());
     }
 }

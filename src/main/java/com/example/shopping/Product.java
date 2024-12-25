@@ -25,4 +25,11 @@ public class Product {
             throw new IllegalStateException("out of stock");
         }
     }
+
+    public BigDecimal calculatePrice(Integer quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("quantity must be greater than 0");
+        }
+        return price.multiply(BigDecimal.valueOf(quantity));
+    }
 }

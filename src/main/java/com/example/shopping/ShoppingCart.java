@@ -12,8 +12,12 @@ public class ShoppingCart {
     }
 
     public void add(Product product) {
-        Integer quantity = this.products.putIfAbsent(product, 0);
-        this.products.put(product, quantity + 1);
+        product.validateStockAvailability();
+        this.products.put(product, products.getOrDefault(product, 0) + 1);
+    }
+
+    public Map<Product, Integer> getCart() {
+        return Map.copyOf(products);
     }
 
     public void showList() {
