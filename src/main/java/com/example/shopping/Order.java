@@ -10,6 +10,9 @@ public class Order {
     private BigDecimal totalAmount;
 
     public Order(Customer customer, Map<Product, Integer> products) {
+        if (products == null || products.isEmpty()) {
+            throw new IllegalArgumentException("products cannot be null or empty");
+        }
         this.customer = customer;
         this.products = products;
         this.totalAmount = calculateTotalAmount(products);
