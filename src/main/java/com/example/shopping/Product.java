@@ -19,4 +19,10 @@ public class Product {
         this.price = price;
         this.stock = new Stock();
     }
+
+    public void validateStockAvailability() {
+        if (stock.isQuantityAvailable()) {
+            throw new IllegalStateException("out of stock");
+        }
+    }
 }
