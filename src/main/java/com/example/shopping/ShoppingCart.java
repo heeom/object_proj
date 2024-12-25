@@ -12,11 +12,8 @@ public class ShoppingCart {
     }
 
     public void add(Product product) {
-        this.add(product, 1);
-    }
-    public void add(Product product, Integer count) {
         Integer quantity = this.products.putIfAbsent(product, 0);
-        this.products.put(product, quantity + count);
+        this.products.put(product, quantity + 1);
     }
 
     public void showList() {
