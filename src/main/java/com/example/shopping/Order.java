@@ -9,7 +9,6 @@ public class Order {
     private Map<Product, Integer> products;
     private BigDecimal totalAmount;
     private OrderStatus status;
-    private Pay pay;
 
     public Order(Customer customer, Map<Product, Integer> products) {
         if (products == null || products.isEmpty()) {
@@ -26,11 +25,5 @@ public class Order {
                 .stream()
                 .map(entry -> entry.getKey().calculatePrice(entry.getValue()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-
-    public void pay(PayType payType, String info) {
-        Pay pay = PayFactory.getPayMethod(payType);
-        pay.makePayment(this.totalAmount, info);
-        this.status = OrderStatus.PAID;
     }
 }

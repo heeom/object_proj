@@ -1,11 +1,12 @@
 package com.example.shopping;
 
-import java.math.BigDecimal;
+import com.example.shopping.vo.PaymentInfo;
+
 
 public class CardPayment implements Pay {
 
     @Override
-    public void makePayment(BigDecimal amount, String info) {
-        System.out.printf("make payment by card. amount : %d, card number : %s", amount, info);
+    public void makePayment(PaymentInfo paymentInfo) {
+        System.out.printf("make payment by card. amount : %s, card number : %s", paymentInfo.getAmount(), paymentInfo.getInfo());
     }
 }
