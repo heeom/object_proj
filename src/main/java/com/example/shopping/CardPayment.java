@@ -2,7 +2,7 @@ package com.example.shopping;
 
 import java.math.BigDecimal;
 
-public class Card implements Pay {
+public class CardPayment implements Pay {
 
     @Override
     public void makePayment(BigDecimal amount, String info) {
