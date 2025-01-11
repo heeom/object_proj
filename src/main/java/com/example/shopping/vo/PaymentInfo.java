@@ -2,28 +2,43 @@ package com.example.shopping.vo;
 
 import java.math.BigDecimal;
 
-public class PaymentInfo {
+public abstract class PaymentInfo { // PaymentInfo 자체는 인스턴스 생성 못하게 abstract 클래스로 선언
     private BigDecimal amount;
-    private String info;
 
-    public PaymentInfo(final BigDecimal amount, final String info) {
+    protected PaymentInfo(BigDecimal amount) {
         this.amount = amount;
-        this.info = info;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    class CardPaymentInfo extends PaymentInfo {
+        private String cardCompany;
+        private String cardNumber;
+
+        public CardPaymentInfo(final BigDecimal amount, final String cardCompany, final String cardNumber) {
+            super(amount);
+            this.cardCompany = cardCompany;
+            this.cardNumber = cardNumber;
+        }
     }
 
-    public String getInfo() {
-        return info;
+    class BankPaymentInfo extends PaymentInfo {
+        private String bank;
+        private String accountNumber;
+
+        public BankPaymentInfo(final BigDecimal amount, final String bank, final String accountNumber) {
+            super(amount);
+            this.bank = bank;
+            this.accountNumber = accountNumber;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "PaymentInfo{" +
-                "amount=" + amount +
-                ", info='" + info + '\'' +
-                '}';
+    class MobilePaymentInfo extends PaymentInfo {
+        private String telecoms;
+        private String phoneNumber;
+
+        public MobilePaymentInfo(final BigDecimal amount, final String telecoms, final String phoneNumber) {
+            super(amount);
+            this.telecoms = telecoms;
+            this.phoneNumber = phoneNumber;
+        }
     }
 }
