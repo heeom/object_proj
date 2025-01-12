@@ -45,4 +45,15 @@ public class Order {
     public void pay() {
         paymentPolicy.pay(this);
     }
+
+    public void cancel() {
+        if (isCancelable()) {
+            status = OrderStatus.CANCELLED;
+        }
+    }
+
+    private boolean isCancelable() {
+        return status == OrderStatus.PENDING;
+    }
+
 }
