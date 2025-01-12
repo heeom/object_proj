@@ -13,6 +13,7 @@ public class Order {
     private BigDecimal refundAmount;
     private OrderStatus status;
     private PaymentPolicy paymentPolicy; // 합성
+    private RefundPolicy refundPolicy;
 
     public Order(Customer customer, Map<Product, Integer> products) {
         if (products == null || products.isEmpty()) {
@@ -61,6 +62,18 @@ public class Order {
 
     public BigDecimal getPaymentAmount() {
         return paymentAmount;
+    }
+
+    public void setRefundPolicy(RefundPolicy refundPolicy) {
+        if (refundPolicy == null) {
+            throw new IllegalArgumentException("refundPolicy cannot be null");
+        }
+        this.refundPolicy = refundPolicy;
+    }
+
+    public void refund() {
+        this.refundAmount = paymentAmount;
+        refundPolicy.refund(this);
     }
 
     public BigDecimal getRefundAmount() {
