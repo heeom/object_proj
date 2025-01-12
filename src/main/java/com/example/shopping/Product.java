@@ -21,7 +21,7 @@ public class Product {
     }
 
     public void validateStockAvailability() {
-        if (stock.isQuantityAvailable()) {
+        if (!stock.isQuantityAvailable()) {
             throw new IllegalStateException("out of stock");
         }
     }
