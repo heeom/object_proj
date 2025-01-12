@@ -63,6 +63,10 @@ public class Order {
         return paymentAmount;
     }
 
+    public void updatePaymentAmount(BigDecimal amount) {
+        this.refundAmount = amount;
+    }
+
     public void setRefundPolicy(RefundPolicy refundPolicy) {
         if (refundPolicy == null) {
             throw new IllegalArgumentException("refundPolicy cannot be null");
