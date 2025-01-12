@@ -17,7 +17,6 @@ public abstract class RefundFeePolicy implements RefundPolicy {
         System.out.println();
         System.out.println("===== calculate refund amount =====");
         calculateFee(order);
-        System.out.println("refund information -> refundAmount : " + order.getRefundAmount() + ", refundFee : " + fee);
         refundPolicy.refund(order);
     }
 
