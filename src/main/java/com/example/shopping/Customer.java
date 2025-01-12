@@ -1,5 +1,8 @@
 package com.example.shopping;
 
+import java.util.List;
+import java.util.Map;
+
 public class Customer {
 
     private String name;
@@ -18,6 +21,10 @@ public class Customer {
 
     public void addCart(Product product) {
         shoppingCart.add(product);
+    }
+
+    public Map<Product, Integer> getShoppingCart() {
+        return shoppingCart.getCart();
     }
 
     public Order order() {

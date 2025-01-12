@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 public class Order {
-
     private Customer customer;
     private Map<Product, Integer> products;
     private BigDecimal totalAmount;
@@ -82,6 +81,14 @@ public class Order {
 
     public void updateRefundAmount(BigDecimal fee) {
         refundAmount = refundAmount.subtract(fee);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "totalAmount=" + totalAmount +
+                ", status=" + status +
+                '}';
     }
 }
 
