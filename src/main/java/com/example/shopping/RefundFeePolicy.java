@@ -1,6 +1,5 @@
 package com.example.shopping;
 
-import java.math.BigDecimal;
 
 public abstract class RefundFeePolicy implements RefundPolicy {
 

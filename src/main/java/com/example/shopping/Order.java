@@ -64,7 +64,7 @@ public class Order {
     }
 
     public void updatePaymentAmount(BigDecimal amount) {
-        this.refundAmount = amount;
+        this.paymentAmount = amount;
     }
 
     public void setRefundPolicy(RefundPolicy refundPolicy) {
@@ -75,7 +75,7 @@ public class Order {
     }
 
     public void refund() {
-        this.refundAmount = paymentAmount;
+        this.refundAmount = totalAmount;
         refundPolicy.refund(this);
     }
 
@@ -91,7 +91,7 @@ public class Order {
     public String toString() {
         return "\n" +" * 주문내역 => " +
                 "상태 : [" + status + "]" +
-                ", 장바구니 총금액=" + totalAmount +
+                ", 총금액=" + totalAmount +
                 ", 결제금액=" + paymentAmount +
                 ", 환불금액=" + refundAmount;
     }

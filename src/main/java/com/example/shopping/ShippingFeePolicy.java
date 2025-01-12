@@ -14,6 +14,7 @@ public class ShippingFeePolicy extends PaymentFeePolicy {
     @Override
     protected void calculateFee(Order order) {
         BigDecimal fee = shippingType.getFee();
-        order.updatePaymentAmount(order.getPaymentAmount().subtract(fee));
+        order.updatePaymentAmount(order.getPaymentAmount().add(fee));
+        System.out.println("==== calculate payment fee : shippingType : " + shippingType + " shipping fee : " + fee);
     }
 }
