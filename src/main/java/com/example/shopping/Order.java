@@ -83,8 +83,8 @@ public class Order {
         return refundAmount;
     }
 
-    public void updateRefundAmount(BigDecimal fee) {
-        refundAmount = refundAmount.subtract(fee);
+    public void updateRefundAmount(BigDecimal amount) {
+        refundAmount = amount;
     }
 
     @Override

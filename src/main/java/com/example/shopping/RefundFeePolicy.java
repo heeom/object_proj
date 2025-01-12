@@ -16,11 +16,10 @@ public abstract class RefundFeePolicy implements RefundPolicy {
     public void refund(Order order) {
         System.out.println();
         System.out.println("===== calculate refund amount =====");
-        BigDecimal fee = calculateFee(order);
-        order.updateRefundAmount(fee);
+        calculateFee(order);
         System.out.println("refund information -> refundAmount : " + order.getRefundAmount() + ", refundFee : " + fee);
         refundPolicy.refund(order);
     }
 
-    abstract protected BigDecimal calculateFee(Order order);
+    abstract protected void calculateFee(Order order);
 }
