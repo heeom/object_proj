@@ -4,14 +4,20 @@ import java.math.BigDecimal;
 
 public abstract class RefundFeePolicy implements RefundPolicy {
 
-    private RefundPolicy before;
-    private boolean chargeFee;
-    private BigDecimal feeRate;
+    private RefundPolicy refundPolicy;
+    protected boolean chargeFee;
+
+    public RefundFeePolicy(RefundPolicy refundPolicy, boolean chargeFee) {
+        this.refundPolicy = refundPolicy;
+        this.chargeFee = chargeFee;
+    }
 
     @Override
     public void refund(Order order) {
-
+        BigDecimal fee = calculateFee(order);
+        order.updateRefundAmount(fee);
+        refundPolicy.refund(order);
     }
 
-    abstract protected void calculateFee(BigDecimal rate);
+    abstract protected BigDecimal calculateFee(Order order);
 }

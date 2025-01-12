@@ -66,5 +66,9 @@ public class Order {
     public BigDecimal getRefundAmount() {
         return refundAmount;
     }
+
+    public void updateRefundAmount(BigDecimal fee) {
+        refundAmount = refundAmount.subtract(fee);
+    }
 }
 
