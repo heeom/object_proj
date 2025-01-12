@@ -9,6 +9,8 @@ public class Order {
     private Customer customer;
     private Map<Product, Integer> products;
     private BigDecimal totalAmount;
+    private BigDecimal paymentAmount;
+    private BigDecimal refundAmount;
     private OrderStatus status;
     private PaymentPolicy paymentPolicy; // 합성
 
@@ -43,6 +45,7 @@ public class Order {
     }
 
     public void pay() {
+        paymentAmount = totalAmount;
         paymentPolicy.pay(this);
     }
 
@@ -56,4 +59,12 @@ public class Order {
         return status == OrderStatus.PENDING;
     }
 
+    public BigDecimal getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public BigDecimal getRefundAmount() {
+        return refundAmount;
+    }
 }
+
