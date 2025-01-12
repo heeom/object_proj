@@ -1,6 +1,5 @@
 package com.example.shopping;
 
-import com.example.shopping.vo.PaymentInfo;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -10,9 +9,8 @@ public class Order {
     private Customer customer;
     private Map<Product, Integer> products;
     private BigDecimal totalAmount;
-    private BigDecimal paidAmount;
     private OrderStatus status;
-    private PayType payType;
+    private PaymentPolicy paymentPolicy; // 합성
 
     public Order(Customer customer, Map<Product, Integer> products) {
         if (products == null || products.isEmpty()) {
@@ -24,6 +22,14 @@ public class Order {
         this.status = OrderStatus.PENDING;
     }
 
+    // setPaymentPolicy 메서드로 PaymentPolicy 인스턴스에 대한 의존성을 런타임에 주입받는다.
+    public void setPaymentPolicy(PaymentPolicy paymentPolicy) {
+        if (paymentPolicy == null) {
+            throw new IllegalArgumentException("paymentPolicy cannot be null");
+        }
+        this.paymentPolicy = paymentPolicy;
+    }
+
     private BigDecimal calculateTotalAmount(Map<Product, Integer> products) {
         return products.entrySet()
                 .stream()
@@ -31,10 +37,12 @@ public class Order {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public void pay(PayType payType, PaymentInfo paymentInfo, PaymentProcessor paymentProcessor) {
-        paymentProcessor.processPayment(payType, paymentInfo);
-        this.payType = payType;
-        this.status = OrderStatus.PAID;
-        this.paidAmount = paymentInfo.getAmount();
+
+    public void changeStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public void pay() {
+        paymentPolicy.pay(this);
     }
 }
