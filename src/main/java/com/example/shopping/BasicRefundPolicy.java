@@ -12,9 +12,11 @@ public abstract class BasicRefundPolicy implements RefundPolicy {
 
     @Override
     public void refund(Order order) {
+        System.out.println();
+        System.out.println("===== start refund =====");
         requestRefund(order);
-        System.out.println("refund succeeded. amount : " + refundAmount);
         order.changeStatus(OrderStatus.REFUNDED);
+        System.out.println("refund succeeded. change order status " + order);
     }
 
 

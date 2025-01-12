@@ -14,8 +14,11 @@ public abstract class RefundFeePolicy implements RefundPolicy {
 
     @Override
     public void refund(Order order) {
+        System.out.println();
+        System.out.println("===== calculate refund amount =====");
         BigDecimal fee = calculateFee(order);
         order.updateRefundAmount(fee);
+        System.out.println("refund information -> refundAmount : " + order.getRefundAmount() + ", refundFee : " + fee);
         refundPolicy.refund(order);
     }
 

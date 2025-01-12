@@ -85,10 +85,11 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "totalAmount=" + totalAmount +
-                ", status=" + status +
-                '}';
+        return "\n" +" * 주문내역 => " +
+                "상태 : [" + status + "]" +
+                ", 장바구니 총금액=" + totalAmount +
+                ", 결제금액=" + paymentAmount +
+                ", 환불금액=" + refundAmount;
     }
 }
 
