@@ -8,8 +8,9 @@ import java.math.BigDecimal;
 public abstract class BasicRatePolicy implements RatePolicy {
 
     @Override
-    public void calculateRate(Phone phone) {
+    public BigDecimal calculateFee(Phone phone) {
         System.out.println("BasicRatePolicy.calculateRate");
+        return BigDecimal.ZERO;
     }
 
     abstract BigDecimal calculateCallFee(Call call);
