@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DateTimeInterval {
 
@@ -47,4 +49,38 @@ public class DateTimeInterval {
     public LocalDateTime getTo() {
         return to;
     }
+
+    public List<DateTimeInterval> splitByDay() {
+        if (days() > 0) {
+            return splitByDay();
+        }
+    }
+
+    // from ~ to 사이에 몇일 인지
+    private long days() {
+        return Duration.between(from.toLocalDate().atStartOfDay(), to.toLocalDate().atStartOfDay()).toDays();
+    }
+
+    private List<DateTimeInterval> splitByDay(long days) {
+        ArrayList<DateTimeInterval> intervals = new ArrayList<>();
+        addFirstDay(intervals);
+        addMiddleDays(intervals, days);
+        addLastDay(intervals);
+        return intervals;
+    }
+
+    private void addFirstDay(ArrayList<DateTimeInterval> intervals) {
+        intervals.add(DateTimeInterval.toMidnight(from));
+    }
+
+    private void addMiddleDays(ArrayList<DateTimeInterval> intervals, long days) {
+        for (int i = 1; i < days; i++) {
+            intervals.add(DateTimeInterval.during(from.toLocalDate().plusDays(i)));
+        }
+    }
+
+    private void addLastDay(ArrayList<DateTimeInterval> intervals) {
+        intervals.add(DateTimeInterval.fromMidnight(to));
+    }
+
 }
